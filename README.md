@@ -80,8 +80,8 @@ pip install opencv-python pyserial torch ultralytics
 - 2.Camera Activation: The AI host opens the webcam and captures a frame/short burst.
 - 3.Local Classification: The AI model categorizes the scene as Human or Non-Human.
 - 4.Action: The AI host sends the categorical result back to Arduino.
-- Human → unlock (servo/relay), optional auto-relock timer
-- Non-Human → remain locked, optional alert
+  - Human → unlock (servo/relay), optional auto-relock timer
+  - Non-Human → remain locked, optional alert
 - 5.(Optional) Logging: Record timestamp, decision, and optional thumbnail locally.
 
 ## 📂 Project Structure  
