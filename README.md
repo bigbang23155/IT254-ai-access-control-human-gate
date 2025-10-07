@@ -90,8 +90,6 @@ Non-Human → remain locked, optional alert
 ├─ /models → model card/notes; pointers to source (no binaries if large)
 └─ /scripts → runtime and utility scripts (documentation only)
 
-複製程式碼
-
 
 ## 🔒Safety & Privacy
 
