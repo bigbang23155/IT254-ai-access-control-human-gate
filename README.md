@@ -9,6 +9,7 @@ This project integrates Arduino hardware with AI-based computer vision to create
 No confidence threshold is used to grant access; instead, a strict categorical decision (Human / Non-Human) determines whether the Arduino should unlock or remain locked (or alert).
 
 ⚙️System Architecture
+
         Presence Sensing                     AI Classification                   Door Control
  ┌────────────────────────┐          ┌────────────────────────────┐         ┌────────────────────────┐
  │      Arduino (IR)      │  Serial  │      AI Host (Python)      │  Serial │      Arduino (Act.)    │
