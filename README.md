@@ -38,8 +38,8 @@ No confidence threshold is used to grant access; instead, a strict categorical d
 
 ## Decision policy:
 
-Human detected → Send an approval signal to the Arduino to unlock (timed relock optional).
-Non-Human detected → Keep locked and optionally trigger an alert (buzzer/LED/log).
+**Human detected → Send an approval signal to the Arduino to unlock (timed relock optional).
+**Non-Human detected → Keep locked and optionally trigger an alert (buzzer/LED/log).
 
 ## 💡 Key Features  
 
@@ -52,34 +52,37 @@ Non-Human detected → Keep locked and optionally trigger an alert (buzzer/LED/l
 ## 🧰Requirements
 
 Hardware
-Arduino (Uno/Mega or equivalent)
-IR proximity sensor module
-Webcam (USB)
-Servo motor or relay module for lock control
-Optional: buzzer/LED for alerts
+**Arduino (Uno/Mega or equivalent)
+**IR proximity sensor module
+**Webcam (USB)
+**Servo motor or relay module for lock control
+**Optional: buzzer/LED for alerts
 
 Software
 
-Python 3.x
-Arduino IDE (for board firmware upload)
-Computer vision stack (OpenCV + a lightweight classification/detection model)
-Python Dependencies (install via pip)
+**Python 3.x
+**Arduino IDE (for board firmware upload)
+**Computer vision stack (OpenCV + a lightweight classification/detection model)
+
+## Python Dependencies (install via pip)
+
 pip install opencv-python pyserial torch ultralytics
 
-Accounts / Ecosystem (as applicable)
-GitHub (version control and public repository for review)
-Optional: Hugging Face (to obtain a lightweight model)
-Optional: Google Teachable Machine (to produce a simple Human/Non-Human classifier)
+## Accounts / Ecosystem (as applicable)
+
+**GitHub (version control and public repository for review)
+**Optional: Hugging Face (to obtain a lightweight model)
+**Optional: Google Teachable Machine (to produce a simple Human/Non-Human classifier)
 
 ## 🔄Operating Flow
 
-IR Sensor Trigger: Arduino detects presence and notifies the AI host.
-Camera Activation: The AI host opens the webcam and captures a frame/short burst.
-Local Classification: The AI model categorizes the scene as Human or Non-Human.
-Action: The AI host sends the categorical result back to Arduino.
-Human → unlock (servo/relay), optional auto-relock timer
-Non-Human → remain locked, optional alert
-(Optional) Logging: Record timestamp, decision, and optional thumbnail locally.
+**IR Sensor Trigger: Arduino detects presence and notifies the AI host.
+**Camera Activation: The AI host opens the webcam and captures a frame/short burst.
+**Local Classification: The AI model categorizes the scene as Human or Non-Human.
+**Action: The AI host sends the categorical result back to Arduino.
+**Human → unlock (servo/relay), optional auto-relock timer
+**Non-Human → remain locked, optional alert
+**(Optional) Logging: Record timestamp, decision, and optional thumbnail locally.
 
 ## 📂 Project Structure  
 
@@ -94,9 +97,9 @@ Non-Human → remain locked, optional alert
 
 ## 🔒Safety & Privacy
 
-On-device inference (no cloud upload by default).
-Camera runs only after IR trigger to minimize continuous recording.
-Clear, auditable Human/Non-Human policy reduces misconfiguration risks.
+**On-device inference (no cloud upload by default).
+**Camera runs only after IR trigger to minimize continuous recording.
+**Clear, auditable Human/Non-Human policy reduces misconfiguration risks.
 
 ## 👤Author Statement
 This repository and README were written individually by me and reflect my own understanding and system design. The repository is public for academic evaluation.
