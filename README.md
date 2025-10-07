@@ -1,29 +1,29 @@
 # IT254-ai-access-control-human-gate
 IT 254 Final Project — AI-Arduino Human Detection Access Control System
 
-###🔐 AI Access Control System
+##🔐 AI Access Control System
 Human vs. Non-Human Detection for Smart Entry (Arduino + Computer Vision)
 
-###📘Overview
+##📘Overview
 This project integrates Arduino hardware with AI-based computer vision to create a smart, privacy-aware access control system. The door controller remains idle until an infrared (IR) proximity sensor detects presence. Upon IR trigger, the connected computer activates a webcam, analyzes the captured frames locally, and classifies the scene as “Human” or “Non-Human” (e.g., pets, vehicles, shadows, inanimate objects).
 No confidence threshold is used to grant access; instead, a strict categorical decision (Human / Non-Human) determines whether the Arduino should unlock or remain locked (or alert).
 
 ## 🧩 System Architecture
 Presence Sensing AI Classification Door Control
-┌────────────────────┐ ┌──────────────────────────┐ ┌────────────────────┐
+┌──────────────────────────┐ ┌──────────────────────────────┐ ┌──────────────────────────┐
 │ Arduino (IR) │ │ AI Host (Python) │ │ Arduino (Act.) │
-│ - IR proximity │───► │ - Webcam via OpenCV │───► │ - Servo/Relay ctrl │
-│ - Event trigger(IR)│ │ - Human vs Non-Human mdl │ │ - Unlock / alarm │
-└────────────────────┘ └──────────────────────────┘ └────────────────────┘
+│ - IR proximity sensor │ ──► │ - Webcam via OpenCV │ ──► │ - Servo / Relay control │
+│ - Event trigger (IR) │ │ - Human vs. Non-Human model │ │ - Unlock / lock / alarm │
+└──────────────────────────┘ └──────────────────────────────┘ └──────────────────────────┘
 ▲ │
-└─────────────(idle until IR)──────────────┘
+└──────────────(idle until IR)──┘
 
 ###Decision policy:
 
 Human detected → Send an approval signal to the Arduino to unlock (timed relock optional).
 Non-Human detected → Keep locked and optionally trigger an alert (buzzer/LED/log).
 
-###💡Key Features
+##💡Key Features
 
 ⚡Energy-aware workflow: Camera only activates when IR sensor is triggered.
 🧠Local, categorical decision: Human vs. Non-Human (no confidence threshold tuning).
@@ -31,7 +31,7 @@ Non-Human detected → Keep locked and optionally trigger an alert (buzzer/LED/l
 🧩Extensible: Add voice/RFID for multi-factor verification; add local logging or dashboards.
 
 
-###🧰Requirements
+##🧰Requirements
 
 Hardware
 Arduino (Uno/Mega or equivalent)
@@ -53,7 +53,7 @@ GitHub (version control and public repository for review)
 Optional: Hugging Face (to obtain a lightweight model)
 Optional: Google Teachable Machine (to produce a simple Human/Non-Human classifier)
 
-###🔄Operating Flow
+##🔄Operating Flow
 
 IR Sensor Trigger: Arduino detects presence and notifies the AI host.
 Camera Activation: The AI host opens the webcam and captures a frame/short burst.
@@ -63,7 +63,7 @@ Human → unlock (servo/relay), optional auto-relock timer
 Non-Human → remain locked, optional alert
 (Optional) Logging: Record timestamp, decision, and optional thumbnail locally.
 
-###📂Project Structure
+##📂Project Structure
 / (repo root)
 ├─ README.md
 ├─ /docs           # diagrams, design notes, dataset notes
@@ -71,14 +71,14 @@ Non-Human → remain locked, optional alert
 ├─ /models         # model card/notes; pointers to source (no binaries in repo if large)
 └─ /scripts        # runtime and utility scripts (documented, no binaries)
 
-###🔒Safety & Privacy
+##🔒Safety & Privacy
 
 On-device inference (no cloud upload by default).
 Camera runs only after IR trigger to minimize continuous recording.
 Clear, auditable Human/Non-Human policy reduces misconfiguration risks.
 
-###👤Author Statement
+##👤Author Statement
 This repository and README were written individually by me and reflect my own understanding and system design. The repository is public for academic evaluation.
 
-###📜License
+##📜License
 Released under the MIT License (or your preferred license).
