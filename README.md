@@ -83,13 +83,13 @@ Non-Human → remain locked, optional alert
 
 ## 📂 Project Structure  
 
-/ (repo root)
+```/ (repo root)
 ├─ README.md
 ├─ /docs → diagrams, design notes, dataset notes
 ├─ /hardware → wiring notes, IR module datasheet, actuator specs
 ├─ /models → model card/notes; pointers to source (no binaries if large)
 └─ /scripts → runtime and utility scripts (documentation only)
-
+```
 
 ## 🔒Safety & Privacy
 
