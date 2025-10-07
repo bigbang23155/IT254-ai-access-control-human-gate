@@ -41,12 +41,12 @@ No confidence threshold is used to grant access; instead, a strict categorical d
 Human detected → Send an approval signal to the Arduino to unlock (timed relock optional).
 Non-Human detected → Keep locked and optionally trigger an alert (buzzer/LED/log).
 
-## 💡Key Features
+## 💡 Key Features  
 
-⚡Energy-aware workflow: Camera only activates when IR sensor is triggered.
-🧠Local, categorical decision: Human vs. Non-Human (no confidence threshold tuning).
-🔄Modular integration: Hardware (Arduino IR + actuator) and software (OpenCV + local model).
-🧩Extensible: Add voice/RFID for multi-factor verification; add local logging or dashboards.
+- ⚡ **Energy-aware workflow:** Camera only activates when IR sensor is triggered.  
+- 🧠 **Local, categorical decision:** Human vs. Non-Human (no confidence threshold tuning).  
+- 🧩 **Modular integration:** Hardware (Arduino IR + actuator) and software (OpenCV + local model).  
+- 🍀 **Extensible:** Add voice/RFID for multi-factor verification; add local logging or dashboards.  
 
 
 ## 🧰Requirements
@@ -81,13 +81,17 @@ Human → unlock (servo/relay), optional auto-relock timer
 Non-Human → remain locked, optional alert
 (Optional) Logging: Record timestamp, decision, and optional thumbnail locally.
 
-## 📂Project Structure
+## 📂 Project Structure  
+
 / (repo root)
 ├─ README.md
-├─ /docs           # diagrams, design notes, dataset notes
-├─ /hardware       # wiring notes, IR module datasheet, actuator specs
-├─ /models         # model card/notes; pointers to source (no binaries in repo if large)
-└─ /scripts        # runtime and utility scripts (documented, no binaries)
+├─ /docs → diagrams, design notes, dataset notes
+├─ /hardware → wiring notes, IR module datasheet, actuator specs
+├─ /models → model card/notes; pointers to source (no binaries if large)
+└─ /scripts → runtime and utility scripts (documentation only)
+
+複製程式碼
+
 
 ## 🔒Safety & Privacy
 
