@@ -9,14 +9,32 @@ This project integrates Arduino hardware with AI-based computer vision to create
 No confidence threshold is used to grant access; instead, a strict categorical decision (Human / Non-Human) determines whether the Arduino should unlock or remain locked (or alert).
 
 ## 🧩 System Architecture
-Presence Sensing AI Classification Door Control
-┌──────────────────────────┐ ┌──────────────────────────────┐ ┌──────────────────────────┐
-│ Arduino (IR) │ │ AI Host (Python) │ │ Arduino (Act.) │
-│ - IR proximity sensor │ ──► │ - Webcam via OpenCV │ ──► │ - Servo / Relay control │
-│ - Event trigger (IR) │ │ - Human vs. Non-Human model │ │ - Unlock / lock / alarm │
-└──────────────────────────┘ └──────────────────────────────┘ └──────────────────────────┘
-▲ │
-└──────────────(idle until IR)──┘
+            ┌──────────────────────────────┐
+            │      Presence Sensing        │
+            │   Arduino (IR)               │
+            │   - IR proximity sensor      │
+            │   - Event trigger (IR)       │
+            └──────────────┬───────────────┘
+                           │  Serial
+                           ▼
+            ┌──────────────────────────────┐
+            │     AI Classification        │
+            │   AI Host (Python)           │
+            │   - Webcam via OpenCV        │
+            │   - Human vs Non-Human model │
+            └──────────────┬───────────────┘
+                           │  Serial
+                           ▼
+            ┌──────────────────────────────┐
+            │        Door Control          │
+            │   Arduino (Act.)             │
+            │   - Servo / Relay control    │
+            │   - Unlock / lock / alarm    │
+            └──────────────────────────────┘
+                           ▲
+                           │
+                 (Idle until IR trigger)
+
 
 ###Decision policy:
 
