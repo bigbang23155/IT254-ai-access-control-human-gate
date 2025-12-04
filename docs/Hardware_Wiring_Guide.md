@@ -11,7 +11,7 @@ No external diagrams are used; all pin mappings are expressed as text tables for
 ### Microcontroller
 ●　Arduino Mega 2560 R3 (Elegoo version recommended)  
 
-###　Sensors & Modules
+### Sensors & Modules  
 ●　HC-SR04 Ultrasonic Distance Sensor  
 ●　MFRC522 RFID Module  
 ●　4×4 Membrane Keypad  
