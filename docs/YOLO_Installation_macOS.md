@@ -230,8 +230,8 @@ System Settings → Privacy → Full Disk Access
 ### ImportError: cannot import name 'A2C2f'
 
 Cause: wrong PyTorch / YOLO version  
-Fix:  
 
+Fix:  
 pip install --upgrade ultralytics  
 pip install --upgrade torch torchvision torchaudio  
 
