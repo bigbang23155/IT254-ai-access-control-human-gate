@@ -215,11 +215,11 @@ YOLO_MODEL = "yolov11s-face.pt"
 Check permissions:
 System Settings → Privacy & Security → Camera
 
-Permit access for:
+Permit access for:  
 
-● Terminal
-● VS Code
-● Python
+● Terminal  
+● VS Code  
+● Python  
 
 ### "Operation not permitted" errors
 
@@ -232,8 +232,8 @@ System Settings → Privacy → Full Disk Access
 Cause: wrong PyTorch / YOLO version
 Fix:
 
-pip install --upgrade ultralytics
-pip install --upgrade torch torchvision torchaudio
+pip install --upgrade ultralytics  
+pip install --upgrade torch torchvision torchaudio  
 
 ### Camera window is black
 
@@ -242,10 +242,10 @@ cap = cv2.VideoCapture(1)
 
 Or close other apps using the webcam:
 
-● FaceTime
-● Zoom
-● Chrome camera tab
-● OBS
+● FaceTime  
+● Zoom  
+● Chrome camera tab  
+● OBS  
 
 # 11. Completion Checklist
 ````
