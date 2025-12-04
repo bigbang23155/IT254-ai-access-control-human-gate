@@ -45,13 +45,13 @@ Tools → Port → /dev/cu.usbmodemXXX (macOS)
 
 Install the following libraries using the Arduino Library Manager:
 ````
-| Library | Purpose |
-|---------|---------|
-| MFRC522 | Communication with RFID module |
-| Keypad | 4×4 matrix keypad scanning |
-| LiquidCrystal | LCD1602 parallel display |
-| SPI | Required by MFRC522 |
-| Wire | I²C support (if needed) |
+| Library       | Purpose                        |
+|---------------|--------------------------------|
+| MFRC522       | Communication with RFID module |
+| Keypad        | 4×4 matrix keypad scanning     |
+| LiquidCrystal | LCD1602 parallel display       |
+| SPI           | Required by MFRC522            |
+| Wire          | I²C support (if needed)        |
 ````
 ### Installing via Library Manager
 Tools → Manage Libraries
@@ -84,43 +84,43 @@ Below is the complete pin mapping used by the system.
 
 ## LCD1602 (Parallel Mode)
 ````
-| LCD Pin | Function | Arduino Pin |
-|---------|----------|--------------|
-| RS | Command select | 33 |
-| EN | Enable | 32 |
-| D4 | Data | 31 |
-| D5 | Data | 30 |
-| D6 | Data | 37 |
-| D7 | Data | 38 |
-| VSS | Ground | GND |
-| VDD | Power | 5V |
-| VO | Contrast | 2kΩ resistor → GND |
-| RW | Read/Write | GND |
+| LCD Pin | Function       | Arduino Pin        |
+|---------|----------------|--------------------|
+| RS      | Command select | 33                 |
+| EN      | Enable         | 32                 |
+| D4      | Data           | 31                 |
+| D5      | Data           | 30                 |
+| D6      | Data           | 37                 |
+| D7      | Data           | 38                 |
+| VSS     | Ground         | GND                |
+| VDD     | Power          | 5V                 |
+| VO      | Contrast       | 2kΩ resistor → GND |
+| RW      | Read/Write     | GND                |
 ````
 ---
 
 ## HC-SR04 Ultrasonic Sensor
 ````
-| Pin | Arduino |
+| Pin  | Arduino  |
 |------|----------|
-| VCC | 5V |
-| GND | GND |
-| TRIG | 6 |
-| ECHO | 7 |
+| VCC  | 5V       |
+| GND  | GND      |
+| TRIG | 6        | 
+| ECHO | 7        |
 ````
 ---
 
 ## RFID MFRC522
 ````
-| Pin | Arduino Mega |
-|------|---------------|
-| SDA | 53 |
-| SCK | 52 |
-| MOSI | 51 |
-| MISO | 50 |
-| RST | 9 |
-| VCC | 3.3V |
-| GND | GND |
+| Pin  | Arduino Mega |
+|------|--------------|
+| SDA  | 53           |
+| SCK  | 52           |
+| MOSI | 51           |
+| MISO | 50           |
+| RST  | 9            |
+| VCC  | 3.3V         |
+| GND  | GND          |
 ````
 ---
 
@@ -129,31 +129,31 @@ Below is the complete pin mapping used by the system.
 ### Row pins (left side)
 ````
 | Row | Arduino Pin |
-|------|--------------|
-| R1 | 5 |
-| R2 | 4 |
-| R3 | 3 |
-| R4 | 2 |
+|-----|-------------|
+| R1  | 5           |
+| R2  | 4           |
+| R3  | 3           |
+| R4  | 2           |
 ````
 ### Column pins (right side)
 ````
 | Column | Arduino Pin |
-|---------|--------------|
-| C1 | 25 |
-| C2 | 24 |
-| C3 | 23 |
-| C4 | 22 |
+|--------|-------------|
+| C1     |    25       |
+| C2     |    24       |
+| C3     |    23       |
+| C4     |    22       |
 ````
 ---
 
 ## Status LEDs / Buzzer / MOSFET
 ````
-| Component | Pin |
-|-----------|------|
-| Green LED | 34 |
-| Red LED | 35 |
-| Buzzer | 36 |
-| MOSFET / Lock Output | 8 |
+| Component            | Pin |
+|----------------------|-----|
+| Green LED            | 34  |
+| Red LED              | 35  |
+| Buzzer               | 36  |
+| MOSFET / Lock Output | 8   |
 ````
 ---
 
