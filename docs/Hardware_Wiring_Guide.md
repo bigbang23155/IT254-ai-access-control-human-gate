@@ -7,7 +7,7 @@ This document provides a complete wiring reference for all electronic components
 
 No external diagrams are used; all pin mappings are expressed as text tables for clarity and easy GitHub rendering.
 
-##　1. Required Components
+## 1. Required Components
 ### Microcontroller
 ●　Arduino Mega 2560 R3 (Elegoo version recommended)  
 
