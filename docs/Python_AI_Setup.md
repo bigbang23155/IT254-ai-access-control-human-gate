@@ -36,9 +36,9 @@ This guide explains how to prepare the Python environment used to run the YOLO-b
 Download from:  
 https://www.python.org/downloads/
 
-During installation (Windows):
+During installation (Windows):  
 ✔ Check **"Add Python to PATH"**  
-✔ Choose **Customize** → ensure `pip` enabled
+✔ Choose **Customize** → ensure `pip` enabled  
 
 ---
 
