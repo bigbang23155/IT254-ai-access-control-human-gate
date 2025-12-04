@@ -1,0 +1,1 @@
+YOLO_MODEL = "models/yolov11s-face.pt"
