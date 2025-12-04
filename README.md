@@ -18,8 +18,8 @@ This project implements a smart access control system that uses both hardware se
 3. Python opens the webcam and executes a YOLO model (human/face detection).
 4. If a human is detected consistently, the AI sends `APPROVED` to Arduino.
 5. Arduino activates the authentication stage:
-   - RFID card reader (MFRC522) **or**
-   - 4×4 Keypad PIN
+   -- RFID card reader (MFRC522) **or**
+   -- 4×4 Keypad PIN
 6. If either authentication succeeds → the system unlocks the door (MOSFET driver).
 7. Door relocks automatically after a defined timeout.
 
@@ -59,33 +59,33 @@ All AI computation is performed **locally** on the host device for privacy and r
 -Human Detection Gatekeeping
 AI determines whether the approaching object is truly human before authentication is permitted.
 
--Event-Driven AI Activation
+--Event-Driven AI Activation
 YOLO runs only when triggered by the ultrasonic sensor.
 
--Dual Authentication Methods
+--Dual Authentication Methods
 Either RFID or Keypad PIN can unlock the door.
 
--Clear User Feedback
+--Clear User Feedback
 LCD messages, buzzer tones, and LED indicators provide intuitive system status.
 
--Auto Relocking & Cooldown Handling
+--Auto Relocking & Cooldown Handling
 Prevents repeated triggering and ensures stable operation.
 
--Modular Architecture
+--Modular Architecture
 Hardware and AI logic are separated and communicate over a simple serial protocol.
 
 ## 4. Hardware Components & Wiring Summary
 Core Components
 
--Arduino Mega 2560 R3
--HC-SR04 Ultrasonic Sensor
--MFRC522 RFID Module
--4×4 Matrix Keypad
--LCD1602 (parallel version)
--Green + Red LEDs
--Active Buzzer
--MOSFET / S8050 Transistor Lock Driver + 1N4007
--5V regulated power supply
+--Arduino Mega 2560 R3
+--HC-SR04 Ultrasonic Sensor
+--MFRC522 RFID Module
+--4×4 Matrix Keypad
+--LCD1602 (parallel version)
+--Green + Red LEDs
+--Active Buzzer
+--MOSFET / S8050 Transistor Lock Driver + 1N4007
+--5V regulated power supply
 
 ## Pin Map Overview
 ```
@@ -106,22 +106,22 @@ docs/Hardware_Wiring_Guide.md
 ## 5. Software Requirements
 Arduino Side
 
--Arduino IDE
--Board: Arduino Mega or Mega 2560
--Upload: Arduino_Project_Demo.ino
+--Arduino IDE
+--Board: Arduino Mega or Mega 2560
+--Upload: Arduino_Project_Demo.ino
 
 Python AI Side
 
--Python 3.8–3.10
--Required packages:
+--Python 3.8–3.10
+--Required packages:
 
 pip install ultralytics opencv-python pyserial
 
 
--Recommended YOLO model:
+--Recommended YOLO model:
 
-  -yolov11s-face.pt
-  -or YOLOv12 (development version)
+  --yolov11s-face.pt
+  --or YOLOv12 (development version)
 
 Python AI script:
 ai_demo.py
@@ -150,19 +150,19 @@ python ai_demo.py
 4. AI activates and detects human presence.
 5. If human confirmed → authentication enabled.
 6. Authenticate using:
-  -Whitelisted RFID card, or
-  -Correct keypad PIN
+  --Whitelisted RFID card, or
+  --Correct keypad PIN
 7. Door unlocks → relocks automatically.
 
 ## 8. Limitations & Future Enhancements
 
--Current face/human detection is not resistant to spoofing.
--Environmental lighting can affect detection accuracy.
--Future features may include:
-  -NFC support
-  -Anti-spoof face detection
-  -Web dashboard & logging
-  -Multi-factor voice authentication
+--Current face/human detection is not resistant to spoofing.
+--Environmental lighting can affect detection accuracy.
+--Future features may include:
+  --NFC support
+  --Anti-spoof face detection
+  --Web dashboard & logging
+  --Multi-factor voice authentication
 
 ## 9. Author Statement
 
