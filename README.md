@@ -56,46 +56,49 @@ All AI computation is performed **locally** on the host device for privacy and r
 ```
 ## 3. Key Features
 
-**Human Detection Gatekeeping
+-Human Detection Gatekeeping
 AI determines whether the approaching object is truly human before authentication is permitted.
 
-**Event-Driven AI Activation
+-Event-Driven AI Activation
 YOLO runs only when triggered by the ultrasonic sensor.
 
-**Dual Authentication Methods
+-Dual Authentication Methods
 Either RFID or Keypad PIN can unlock the door.
 
-**Clear User Feedback
+-Clear User Feedback
 LCD messages, buzzer tones, and LED indicators provide intuitive system status.
 
-**Auto Relocking & Cooldown Handling
+-Auto Relocking & Cooldown Handling
 Prevents repeated triggering and ensures stable operation.
 
-**Modular Architecture
+-Modular Architecture
 Hardware and AI logic are separated and communicate over a simple serial protocol.
 
 ## 4. Hardware Components & Wiring Summary
 Core Components
 
-**Arduino Mega 2560 R3
-**HC-SR04 Ultrasonic Sensor
-**MFRC522 RFID Module
-**4×4 Matrix Keypad
-**LCD1602 (parallel version)
-**Green + Red LEDs
-**Active Buzzer
-**MOSFET / S8050 Transistor Lock Driver + 1N4007
-**5V regulated power supply
+-Arduino Mega 2560 R3
+-HC-SR04 Ultrasonic Sensor
+-MFRC522 RFID Module
+-4×4 Matrix Keypad
+-LCD1602 (parallel version)
+-Green + Red LEDs
+-Active Buzzer
+-MOSFET / S8050 Transistor Lock Driver + 1N4007
+-5V regulated power supply
 
-Pin Map Overview
-Module	Pin on Mega
-Ultrasonic HC-SR04	TRIG=D6, ECHO=D7
-RFID MFRC522	SDA=53, SCK=52, MOSI=51, MISO=50, RST=9
-LCD1602 (Parallel)	RS=33, RW=32, E=31, D4=30, D5=37, D6=38
-Keypad 4×4	R1–R4 → D5,D4,D3,D2 / C1–C4 → D25,D24,D23,D22
-LEDs	Green=D34, Red=D35
-Buzzer	D36
-Lock Driver	MOSFET/S8050 → D8
+## Pin Map Overview
+```
+| **Module**           | **Pin on Arduino Mega 2560**                                 |
+|----------------------|---------------------------------------------------------------|
+| **Ultrasonic HC-SR04** | TRIG → **D6**, ECHO → **D7**                                 |
+| **RFID MFRC522**       | SDA → **D53**, SCK → **D52**, MOSI → **D51**, MISO → **D50**, RST → **D9** |
+| **LCD1602 (Parallel)** | RS → **D33**, RW → **D32**, E → **D31**, D4 → **D30**, D5 → **D37**, D6 → **D38** |
+| **Keypad 4×4**         | Rows (R1–R4) → **D5, D4, D3, D2**<br>Cols (C1–C4) → **D25, D24, D23, D22** |
+| **LED Indicators**     | Green LED → **D34**, Red LED → **D35**                       |
+| **Buzzer**             | **D36**                                                      |
+| **Lock Driver (MOSFET / S8050)** | Control Pin → **D8**                               |
+```
 
 Full details are available in:
 docs/Hardware_Wiring_Guide.md
@@ -103,22 +106,22 @@ docs/Hardware_Wiring_Guide.md
 ## 5. Software Requirements
 Arduino Side
 
-**Arduino IDE
-**Board: Arduino Mega or Mega 2560
-**Upload: Arduino_Project_Demo.ino
+-Arduino IDE
+-Board: Arduino Mega or Mega 2560
+-Upload: Arduino_Project_Demo.ino
 
 Python AI Side
 
-**Python 3.8–3.10
-**Required packages:
+-Python 3.8–3.10
+-Required packages:
 
 pip install ultralytics opencv-python pyserial
 
 
-**Recommended YOLO model:
+-Recommended YOLO model:
 
-  **yolov11s-face.pt
-  **or YOLOv12 (development version)
+  -yolov11s-face.pt
+  -or YOLOv12 (development version)
 
 Python AI script:
 ai_demo.py
@@ -147,19 +150,19 @@ python ai_demo.py
 4. AI activates and detects human presence.
 5. If human confirmed → authentication enabled.
 6. Authenticate using:
-  **Whitelisted RFID card, or
-  **Correct keypad PIN
+  -Whitelisted RFID card, or
+  -Correct keypad PIN
 7. Door unlocks → relocks automatically.
 
 ## 8. Limitations & Future Enhancements
 
-**Current face/human detection is not resistant to spoofing.
-**Environmental lighting can affect detection accuracy.
-**Future features may include:
-  **NFC support
-  **Anti-spoof face detection
-  **Web dashboard & logging
-  **Multi-factor voice authentication
+-Current face/human detection is not resistant to spoofing.
+-Environmental lighting can affect detection accuracy.
+-Future features may include:
+  -NFC support
+  -Anti-spoof face detection
+  -Web dashboard & logging
+  -Multi-factor voice authentication
 
 ## 9. Author Statement
 
