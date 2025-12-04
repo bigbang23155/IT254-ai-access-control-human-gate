@@ -106,22 +106,22 @@ docs/Hardware_Wiring_Guide.md
 ## 5. Software Requirements
 Arduino Side
 
-● Arduino IDE
-● Board: Arduino Mega or Mega 2560
-● Upload: Arduino_Project_Demo.ino
+● Arduino IDE  
+● Board: Arduino Mega or Mega 2560  
+● Upload: Arduino_Project_Demo.ino  
 
 Python AI Side
 
-● Python 3.8–3.10
-● Required packages:
+● Python 3.8–3.10  
+● Required packages:  
 
 pip install ultralytics opencv-python pyserial
 
 
-● Recommended YOLO model:
+● Recommended YOLO model:  
 
-  ● yolov11s-face.pt
-  ● or YOLOv12 (development version)
+  ● yolov11s-face.pt  
+  ● or YOLOv12 (development version)  
 
 Python AI script:
 ai_demo.py
