@@ -168,3 +168,9 @@ python ai_demo.py
 
 This project was fully designed and implemented by Equinox as part of the IT 254 course final project.
 The README, documentation, Arduino firmware, and Python code reflect my own work and understanding of embedded systems, AI, and sensor integration.
+
+## Source Code
+- 🔧 Arduino Firmware: [Arduino/Arduino_Project_Demo.ino](Arduino/Arduino_Project_Demo.ino)
+- 🤖 Python AI Module: [Python/ai_demo.py](Python/ai_demo.py)
+- 🧠 YOLO Model Weights: stored in `/models`
+
