@@ -212,8 +212,8 @@ YOLO_MODEL = "yolov11s-face.pt"
 # 10. Troubleshooting (macOS-specific)
 ### YOLO cannot access webcam
 
-Check permissions:
-System Settings → Privacy & Security → Camera
+Check permissions:  
+System Settings → Privacy & Security → Camera  
 
 Permit access for:  
 
@@ -223,24 +223,24 @@ Permit access for:
 
 ### "Operation not permitted" errors
 
-Grant full disk access if needed:
+Grant full disk access if needed:  
 
-System Settings → Privacy → Full Disk Access
+System Settings → Privacy → Full Disk Access  
 
 ### ImportError: cannot import name 'A2C2f'
 
-Cause: wrong PyTorch / YOLO version
-Fix:
+Cause: wrong PyTorch / YOLO version  
+Fix:  
 
 pip install --upgrade ultralytics  
 pip install --upgrade torch torchvision torchaudio  
 
 ### Camera window is black
 
-Try camera index 1:
-cap = cv2.VideoCapture(1)
+Try camera index 1:  
+cap = cv2.VideoCapture(1)  
 
-Or close other apps using the webcam:
+Or close other apps using the webcam:  
 
 ● FaceTime  
 ● Zoom  
