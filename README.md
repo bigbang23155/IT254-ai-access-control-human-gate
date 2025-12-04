@@ -1,108 +1,167 @@
-# IT254-ai-access-control-human-gate
-IT 254 Final Project — AI-Arduino Human Detection Access Control System
+# AI–Arduino Human Detection Access Control System
 
-## 🔐 AI Access Control System
-Human vs. Non-Human Detection for Smart Entry (Arduino + Computer Vision)
+**Course:** IT 254 – Final Project  
+**Author:** Equinox (2025)  
+**Board:** Arduino Mega 2560 (Elegoo)  
+**AI Engine:** Python + YOLOv11/YOLOv12 (Local Inference)
 
-## 📘Overview
-This project integrates Arduino hardware with AI-based computer vision to create a smart, privacy-aware access control system. The door controller remains idle until an infrared (IR) proximity sensor detects presence. Upon IR trigger, the connected computer activates a webcam, analyzes the captured frames locally, and classifies the scene as “Human” or “Non-Human” (e.g., pets, vehicles, shadows, inanimate objects).
-No confidence threshold is used to grant access; instead, a strict categorical decision (Human / Non-Human) determines whether the Arduino should unlock or remain locked (or alert).
+---
 
-## 🧩 System Architecture
-            ┌──────────────────────────────┐
-            │      Presence Sensing        │
-            │   Arduino (IR)               │
-            │   - IR proximity sensor      │
-            │   - Event trigger (IR)       │
-            └──────────────┬───────────────┘
-                           │  Serial
-                           ▼
-            ┌──────────────────────────────┐
-            │     AI Classification        │
-            │   AI Host (Python)           │
-            │   - Webcam via OpenCV        │
-            │   - Human vs Non-Human model │
-            └──────────────┬───────────────┘
-                           │  Serial
-                           ▼
-            ┌──────────────────────────────┐
-            │        Door Control          │
-            │   Arduino (Act.)             │
-            │   - Servo / Relay control    │
-            │   - Unlock / lock / alarm    │
-            └──────────────────────────────┘
-                           ▲
-                           │
-                 (Idle until IR trigger)
+## 1. Project Overview
+
+This project implements a smart access control system that uses both hardware sensors and AI-based human detection. Before authentication is allowed, the system must first confirm that an actual human is standing in front of the door.
+
+**Workflow Summary:**
+
+1. An ultrasonic distance sensor detects that an object is near.
+2. Arduino sends a `TRIGGER` message to a Python AI engine.
+3. Python opens the webcam and executes a YOLO model (human/face detection).
+4. If a human is detected consistently, the AI sends `APPROVED` to Arduino.
+5. Arduino activates the authentication stage:
+   - RFID card reader (MFRC522) **or**
+   - 4×4 Keypad PIN
+6. If either authentication succeeds → the system unlocks the door (MOSFET driver).
+7. Door relocks automatically after a defined timeout.
+
+All AI computation is performed **locally** on the host device for privacy and reliability.
+
+---
+
+## 2. System Architecture
+
+```text
+ ┌──────────────────────────────┐
+ │      Presence Sensing        │
+ │   HC-SR04 Ultrasonic Sensor  │
+ └──────────────┬───────────────┘
+                │  Serial (USB)
+                ▼
+ ┌──────────────────────────────┐
+ │   AI Classification Engine   │
+ │   Python + YOLOv11/YOLOv12   │
+ │   - Webcam via OpenCV        │
+ │   - Human / Face detection   │
+ │   - Sends APPROVED/DENIED    │
+ └──────────────┬───────────────┘
+                │  Serial (USB)
+                ▼
+ ┌──────────────────────────────┐
+ │      Arduino Access Unit     │
+ │  - LCD1602 Display           │
+ │  - RFID Authentication       │
+ │  - Keypad PIN Authentication │
+ │  - Buzzer + LEDs             │
+ │  - MOSFET Lock Control       │
+ └──────────────────────────────┘
+```
+## 3. Key Features
+
+**Human Detection Gatekeeping
+AI determines whether the approaching object is truly human before authentication is permitted.
+
+**Event-Driven AI Activation
+YOLO runs only when triggered by the ultrasonic sensor.
+
+**Dual Authentication Methods
+Either RFID or Keypad PIN can unlock the door.
+
+**Clear User Feedback
+LCD messages, buzzer tones, and LED indicators provide intuitive system status.
+
+**Auto Relocking & Cooldown Handling
+Prevents repeated triggering and ensures stable operation.
+
+**Modular Architecture
+Hardware and AI logic are separated and communicate over a simple serial protocol.
+
+## 4. Hardware Components & Wiring Summary
+Core Components
+
+**Arduino Mega 2560 R3
+**HC-SR04 Ultrasonic Sensor
+**MFRC522 RFID Module
+**4×4 Matrix Keypad
+**LCD1602 (parallel version)
+**Green + Red LEDs
+**Active Buzzer
+**MOSFET / S8050 Transistor Lock Driver + 1N4007
+**5V regulated power supply
+
+Pin Map Overview
+Module	Pin on Mega
+Ultrasonic HC-SR04	TRIG=D6, ECHO=D7
+RFID MFRC522	SDA=53, SCK=52, MOSI=51, MISO=50, RST=9
+LCD1602 (Parallel)	RS=33, RW=32, E=31, D4=30, D5=37, D6=38
+Keypad 4×4	R1–R4 → D5,D4,D3,D2 / C1–C4 → D25,D24,D23,D22
+LEDs	Green=D34, Red=D35
+Buzzer	D36
+Lock Driver	MOSFET/S8050 → D8
+
+Full details are available in:
+docs/Hardware_Wiring_Guide.md
+
+## 5. Software Requirements
+Arduino Side
+
+**Arduino IDE
+**Board: Arduino Mega or Mega 2560
+**Upload: Arduino_Project_Demo.ino
+
+Python AI Side
+
+**Python 3.8–3.10
+**Required packages:
+
+pip install ultralytics opencv-python pyserial
 
 
-## Decision policy:
+**Recommended YOLO model:
 
-**Human detected → Send an approval signal to the Arduino to unlock (timed relock optional).
-**Non-Human detected → Keep locked and optionally trigger an alert (buzzer/LED/log).
+  **yolov11s-face.pt
+  **or YOLOv12 (development version)
 
-## 💡 Key Features  
+Python AI script:
+ai_demo.py
 
-- ⚡ **Energy-aware workflow:** Camera only activates when IR sensor is triggered.  
-- 🧠 **Local, categorical decision:** Human vs. Non-Human (no confidence threshold tuning).  
-- 🧩 **Modular integration:** Hardware (Arduino IR + actuator) and software (OpenCV + local model).  
-- 🍀 **Extensible:** Add voice/RFID for multi-factor verification; add local logging or dashboards.  
-
-
-## 🧰Requirements
-
-Hardware
-- Arduino (Uno/Mega or equivalent)
-- IR proximity sensor module
-- Webcam (USB)
-- Servo motor or relay module for lock control
-- Optional: buzzer/LED for alerts
-
-Software
-
-- Python 3.x
-- Arduino IDE (for board firmware upload)
-- Computer vision stack (OpenCV + a lightweight classification/detection model)
-
-## Python Dependencies (install via pip)
-
-pip install opencv-python pyserial torch ultralytics
-
-## Accounts / Ecosystem (as applicable)
-
-- GitHub (version control and public repository for review)
-- Optional: Hugging Face (to obtain a lightweight model)
-- Optional: Google Teachable Machine (to produce a simple Human/Non-Human classifier)
-
-## 🔄Operating Flow
-
-- 1.IR Sensor Trigger: Arduino detects presence and notifies the AI host.
-- 2.Camera Activation: The AI host opens the webcam and captures a frame/short burst.
-- 3.Local Classification: The AI model categorizes the scene as Human or Non-Human.
-- 4.Action: The AI host sends the categorical result back to Arduino.
-  - Human → unlock (servo/relay), optional auto-relock timer
-  - Non-Human → remain locked, optional alert
-- 5.(Optional) Logging: Record timestamp, decision, and optional thumbnail locally.
-
-## 📂 Project Structure  
+## 6. Repository Structure
 
 ```
-/ (repo root)
-├─ README.md
-├─ /docs → diagrams, design notes, dataset notes
-├─ /hardware → wiring notes, IR module datasheet, actuator specs
-├─ /models → model card/notes; pointers to source (no binaries if large)
-└─ /scripts → runtime and utility scripts (documentation only)
+AI-Access-Control/
+├── Arduino_Project_Demo.ino
+├── ai_demo.py
+├── yolov11s-face.pt          # (Optional in repo)
+├── /docs
+│   ├── Project_Overview.md
+│   ├── Hardware_Wiring_Guide.md
+│   └── YOLOv12_Installation.md
+└── /runs (optional YOLO outputs)
 ```
 
-## 🔒Safety & Privacy
+## 7. Running the System
 
-- On-device inference (no cloud upload by default).
-- Camera runs only after IR trigger to minimize continuous recording.
-- Clear, auditable Human/Non-Human policy reduces misconfiguration risks.
+1. Connect Arduino via USB.
+2. Run Python AI engine:
+python ai_demo.py
 
-## 👤Author Statement
-This repository and README were written individually by me and reflect my own understanding and system design. The repository is public for academic evaluation.
+3. Approach the HC-SR04 sensor.
+4. AI activates and detects human presence.
+5. If human confirmed → authentication enabled.
+6. Authenticate using:
+  **Whitelisted RFID card, or
+  **Correct keypad PIN
+7. Door unlocks → relocks automatically.
 
-## 📜License
-Released under the MIT License (or your preferred license).
+## 8. Limitations & Future Enhancements
+
+**Current face/human detection is not resistant to spoofing.
+**Environmental lighting can affect detection accuracy.
+**Future features may include:
+  **NFC support
+  **Anti-spoof face detection
+  **Web dashboard & logging
+  **Multi-factor voice authentication
+
+## 9. Author Statement
+
+This project was fully designed and implemented by Equinox as part of the IT 254 course final project.
+The README, documentation, Arduino firmware, and Python code reflect my own work and understanding of embedded systems, AI, and sensor integration.
