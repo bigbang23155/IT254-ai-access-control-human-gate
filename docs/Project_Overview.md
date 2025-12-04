@@ -72,7 +72,7 @@ All inference occurs on-device to protect user privacy.
   Detects presence within a configurable distance range.  
   Triggers the AI engine only when necessary.  
 
-  ## 4.2 YOLO Human/Face Detection
+  # 4.2 YOLO Human/Face Detection
   Using:
   ● YOLOv11s-face.pt (preferred for speed + accuracy)  
   ● Or YOLOv12 if supported on GPU  
