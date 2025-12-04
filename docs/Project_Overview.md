@@ -73,11 +73,11 @@ All inference occurs on-device to protect user privacy.
   Triggers the AI engine only when necessary.  
 
   ### 4.2 YOLO Human/Face Detection
-  Using:
+  Using:  
   ● YOLOv11s-face.pt (preferred for speed + accuracy)  
   ● Or YOLOv12 if supported on GPU  
 
-  The Python script:
+  The Python script:  
   ● Opens the webcam  
   ● Runs inference in real time  
   ● Draws labeled bounding boxes  
@@ -88,7 +88,7 @@ All inference occurs on-device to protect user privacy.
   After AI approval:
 
   ● Scan a registered RFID card  
-  or
+  or  
   ● Enter a correct PIN code  
 
 Either method unlocks the door.
