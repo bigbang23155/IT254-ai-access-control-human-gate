@@ -68,11 +68,11 @@ All inference occurs on-device to protect user privacy.
  └────────────────────────────────────┘
 ```
 ## 4. Core Components & Roles
-  ## 4.1 Ultrasonic Sensor (HC-SR04)
+  ### 4.1 Ultrasonic Sensor (HC-SR04)
   Detects presence within a configurable distance range.  
   Triggers the AI engine only when necessary.  
 
-  # 4.2 YOLO Human/Face Detection
+  ### 4.2 YOLO Human/Face Detection
   Using:
   ● YOLOv11s-face.pt (preferred for speed + accuracy)  
   ● Or YOLOv12 if supported on GPU  
@@ -84,7 +84,7 @@ All inference occurs on-device to protect user privacy.
   ● Counts consecutive frames of human detection  
   ● Sends APPROVED or DENIED back to Arduino  
 
-  ## 4.3 Authentication (RFID + Keypad)
+  ### 4.3 Authentication (RFID + Keypad)
   After AI approval:
 
   ● Scan a registered RFID card  
@@ -93,12 +93,12 @@ All inference occurs on-device to protect user privacy.
 
 Either method unlocks the door.
 
-  ## 4.4 Feedback System
+  ### 4.4 Feedback System
   ● LCD shows system status  
   ● Green/Red LEDs indicate lock state  
   ● Buzzer confirms success or failure  
 
-  ## 4.5 Lock Driver
+  ### 4.5 Lock Driver
   MOSFET or S8050 transistor + diode protects the circuit and drives the lock/motor.
 
 ## 5. Interaction Flow
