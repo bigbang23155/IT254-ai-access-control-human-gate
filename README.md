@@ -7,7 +7,7 @@
 
 ---
 
-## 1. Project Overview
+## 1️⃣ 🤖 Project Overview
 
 This project implements a smart access control system that uses both hardware sensors and AI-based human detection. Before authentication is allowed, the system must first confirm that an actual human is standing in front of the door.
 
@@ -27,7 +27,7 @@ All AI computation is performed **locally** on the host device for privacy and r
 
 ---
 
-## 2. System Architecture
+## 2️⃣ 🔧 System Architecture
 
 ```text
  ┌──────────────────────────────┐
@@ -54,7 +54,7 @@ All AI computation is performed **locally** on the host device for privacy and r
  │  - MOSFET Lock Control       │
  └──────────────────────────────┘
 ```
-## 3. Key Features
+## 3️⃣ 🧩 Key Features
 
 ● Human Detection Gatekeeping
 AI determines whether the approaching object is truly human before authentication is permitted.
@@ -74,7 +74,7 @@ Prevents repeated triggering and ensures stable operation.
 ● Modular Architecture
 Hardware and AI logic are separated and communicate over a simple serial protocol.
 
-## 4. Hardware Components & Wiring Summary
+## 4️⃣ 🛠️ Hardware Components & Wiring Summary
 Core Components
 
 ● Arduino Mega 2560 R3  
@@ -103,7 +103,7 @@ Core Components
 Full details are available in:
 docs/Hardware_Wiring_Guide.md
 
-## 5. Software Requirements
+## 5️⃣ ⚙️ Software Requirements
 Arduino Side
 
 ● Arduino IDE  
@@ -126,7 +126,7 @@ pip install ultralytics opencv-python pyserial
 Python AI script:
 ai_demo.py
 
-## 6. Repository Structure
+## 5️⃣ ⚙️ Repository Structure
 
 ```
 AI-Access-Control/
@@ -140,7 +140,7 @@ AI-Access-Control/
 └── /runs (optional YOLO outputs)
 ```
 
-## 7. Running the System
+## 7️⃣ 📡 Running the System
 
 1. Connect Arduino via USB.
 2. Run Python AI engine:
@@ -154,17 +154,17 @@ python ai_demo.py
   ● Correct keypad PIN
 7. Door unlocks → relocks automatically.
 
-## 8. Limitations & Future Enhancements
+## 8️⃣ 🔐 Limitations & Future Enhancements
 
-● Current face/human detection is not resistant to spoofing.
-● Environmental lighting can affect detection accuracy.
-● Future features may include:
-  ● NFC support
-  ● Anti-spoof face detection
-  ● Web dashboard & logging
-  ● Multi-factor voice authentication
+● Current face/human detection is not resistant to spoofing.  
+● Environmental lighting can affect detection accuracy.  
+● Future features may include:  
+  ● NFC support  
+  ● Anti-spoof face detection  
+  ● Web dashboard & logging  
+  ● Multi-factor voice authentication  
 
-## 9. Author Statement
+## 9️⃣ 🚀 Author Statement
 
 This project was fully designed and implemented by Equinox as part of the IT 254 course final project.
 The README, documentation, Arduino firmware, and Python code reflect my own work and understanding of embedded systems, AI, and sensor integration.
