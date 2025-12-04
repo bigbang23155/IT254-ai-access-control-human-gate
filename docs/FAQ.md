@@ -259,16 +259,16 @@ INACTIVITY_TIMEOUT = 5
 
 # 11. Quick Diagnostic Checklist
 ````
-| Component | Working? |
-|-----------|----------|
-| LCD shows text | ✔ |
-| Keypad prints correct characters | ✔ |
-| RFID scans cards | ✔ |
-| Ultrasonic detects presence | ✔ |
-| Python receives TRIGGER | ✔ |
-| YOLO opens webcam | ✔ |
-| APPROVED/DENIED returns to Arduino | ✔ |
-| Lock activates and relocks | ✔ |
+| Component                          | Working?  |
+|------------------------------------|---------- |
+| LCD shows text                     | ✔        |
+| Keypad prints correct characters   | ✔        | 
+| RFID scans cards                   | ✔        | 
+| Ultrasonic detects presence        | ✔        |
+| Python receives TRIGGER            | ✔        |
+| YOLO opens webcam                  | ✔        |
+| APPROVED/DENIED returns to Arduino | ✔        |
+| Lock activates and relocks         | ✔        |
 ````
 ---
 
