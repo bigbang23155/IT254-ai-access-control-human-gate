@@ -95,33 +95,33 @@ Checklist:
 ---
 
 ### **Q7. The card UID appears but does not match the whitelist.**
-Check formatting:
+Check formatting:  
 - Use uppercase hex format: `67 62 CD 73`  
 - Include spaces between bytes  
-- Compare exactly (case-sensitive, space-sensitive)
+- Compare exactly (case-sensitive, space-sensitive)  
 
 ---
 
 # 5. AI / YOLO Detection Issues
 
 ### **Q8. Python prints an error: “A2C2f not found”.**
-Cause:
+Cause:  
 - YOLO model incompatible with current Ultralytics version  
 - Python version too new  
 
-Fix:
+Fix:  
 - Use Python **3.10**  
 - Install YOLO ≥ `8.3.16`  
 
 ---
 
 ### **Q9. Webcam window does not appear when YOLO runs.**
-Possible causes:
+Possible causes:  
 - Another app is using the webcam  
 - macOS permission denied  
 - OpenCV not installed correctly  
 
-Fix:
+Fix:  
 1. Close Zoom, Discord, Camera App, OBS  
 2. Reinstall OpenCV:  
 pip install --upgrade opencv-python
@@ -131,7 +131,7 @@ pip install --upgrade opencv-python
 ---
 
 ### **Q10. YOLO detects objects but not humans.**
-Check:
+Check:  
 - Using correct model (`yolov11s-face.pt`, `face.pt`, or `person.pt`)  
 - Lighting conditions  
 - Camera resolution set properly  
@@ -140,11 +140,11 @@ Check:
 ---
 
 ### **Q11. YOLO detection is very slow.**
-This is normal on:
+This is normal on:  
 - CPU-only systems  
-- macOS without GPU acceleration
+- macOS without GPU acceleration  
 
-Possible improvements:
+Possible improvements:  
 - Use `n` (nano) version models  
 - Reduce frame size  
 - Lower confidence threshold  
@@ -154,7 +154,7 @@ Possible improvements:
 # 6. Python Serial Communication Issues
 
 ### **Q12. Python error: “Cannot open COM port”.**
-Fix:
+Fix:  
 - Close the Arduino Serial Monitor  
 - Check COM port using Device Manager  
 - Ensure only one process uses the port  
@@ -162,7 +162,7 @@ Fix:
 ---
 
 ### **Q13. Arduino does not receive APPROVED/DENIED from Python.**
-Check:
+Check:  
 - Baud rate must be **9600** on both sides  
 - Python must send newline `\n`  
 - USB cable must be data-capable, not charge-only  
@@ -170,11 +170,11 @@ Check:
 ---
 
 ### **Q14. Python script stuck at “Waiting for TRIGGER…”**
-Meaning:
+Meaning:  
 - Arduino is not sending `"TRIGGER"`  
 - Ultrasonic sensor may not detect presence  
 
-Verify:
+Verify:  
 - Sensor wiring  
 - Distance threshold in code  
 - Arduino Serial prints debug messages  
@@ -184,18 +184,18 @@ Verify:
 # 7. Arduino Firmware Issues
 
 ### **Q15. The buzzer beeps nonstop.**
-Cause:
+Cause:  
 - System entered authentication mode repeatedly  
 - PIR/sensor noise  
 
-Fix:
+Fix:  
 - Ensure `verifyEnabled = false` resets correctly  
 - Increase debounce or timeout  
 
 ---
 
 ### **Q16. LEDs do not behave correctly.**
-Check:
+Check:  
 - Green LED → D34  
 - Red LED → D35  
 - Both require current-limiting resistor  
@@ -205,7 +205,7 @@ Check:
 # 8. Door Lock / MOSFET Issues
 
 ### **Q17. Motor or lock does not activate.**
-Check:
+Check:  
 - MOSFET gate connected to D8  
 - Diode across motor terminals  
 - External power (if using real lock)  
@@ -214,7 +214,7 @@ Check:
 ---
 
 ### **Q18. Lock activates only sometimes.**
-Fix:
+Fix:  
 - Ensure common ground between Arduino and motor power  
 - Verify MOSFET orientation  
 - Avoid breadboard high-current limitations  
@@ -224,20 +224,20 @@ Fix:
 # 9. Model File Issues
 
 ### **Q19. YOLO model file not found.**
-Ensure:
+Ensure:  
 - File is placed in project root  
 - Python path matches filename  
 
-YOLO_MODEL = "yolov11s-face.pt"
+YOLO_MODEL = "yolov11s-face.pt"  
 
 
 ---
 
 ### **Q20. Using custom model shows “RuntimeError: size mismatch”.**
-Cause:
+Cause:  
 - Model trained for classification but used for detection  
-Fix:
-- Use YOLO **detection models** only (YOLOv8/11/12 *detect* versions)
+Fix:  
+- Use YOLO **detection models** only (YOLOv8/11/12 *detect* versions)  
 
 ---
 
@@ -245,14 +245,14 @@ Fix:
 
 ### **Q21. Arduino triggers before AI finishes processing.**
 This is expected.  
-The firmware waits for AI result before enabling authentication again.
+The firmware waits for AI result before enabling authentication again.  
 
 ---
 
 ### **Q22. User fails authentication because AI timed out.**
 AI timeout can be tuned in `ai_demo.py`:
-AUTH_TIMEOUT = 15
-INACTIVITY_TIMEOUT = 5
+AUTH_TIMEOUT = 15  
+INACTIVITY_TIMEOUT = 5  
 
 
 ---
